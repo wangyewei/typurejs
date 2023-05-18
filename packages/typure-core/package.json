@@ -1,0 +1,14 @@
+{
+  "name": "typure-core",
+  "version": "0.0.0",
+  "description": "",
+  "type": "module",
+  "private":"true",
+  "keywords": [],
+  "author": "wangyewei<wangyewei1@foxmain.com>",
+  "license": "MIT",
+  "dependencies": {
+    "vite": "^4.3.8",
+    "@typure/shared": "workspace:*"
+  }
+}

@@ -2,9 +2,14 @@
   "name": "typurejs",
   "version": "1.0.0",
   "description": "Typure is a lightweight TypeScript framework that focuses on native HTML development and componentization.",
-  "main": "index.js",
-  "scripts": {
-    "start:dev": "pnpm -F runtime-dev start"
+  "engines": {
+    "node": ">= 18.0.0",
+    "pnpm": ">= 7.0.0"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
   },
   "repository": {
     "type": "git",
@@ -26,6 +31,7 @@
   },
   "homepage": "https://github.com/wangyewei/Typurejs#readme",
   "dependencies": {
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "@typure/cli": "^0.0.1"
   }
 }
