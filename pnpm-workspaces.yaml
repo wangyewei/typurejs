@@ -1,0 +1,5 @@
+packages:
+  - "typure-core"
+  - "runtime-dev"
+  - "typure-ui"
+  - "shared"

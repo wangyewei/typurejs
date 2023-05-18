@@ -1,0 +1,1 @@
+export const isString = (val: string): val is string => typeof val === 'string'

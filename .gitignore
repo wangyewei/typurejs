@@ -1,0 +1,32 @@
+# Logs
+logs
+*.log
+
+# Dependency directories
+node_modules/
+
+# Distribution files
+dist/
+build/
+bundle.js
+
+runtime-dev
+
+# Environment
+*.env.local
+*.env.development.local
+*.env.test.local
+*.env.production.local
+.env.local
+.env.development
+.env.test
+.env.production
+
+# IDE
+.idea/
+.vscode/
+*.sublime-*
+
+# OS
+.DS_Store
+Thumbs.db
