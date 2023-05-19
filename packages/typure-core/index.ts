@@ -11,3 +11,7 @@ export default class Typure {
 
   static defineComponent = defineComponent
 }
+export {
+  defineComponent,
+  Component
+}

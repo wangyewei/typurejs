@@ -1,8 +1,8 @@
-type Component = {
-  new(): HTMLElement
+type Component<T> = {
+  new(props: T): HTMLElement
 }
 
-export type ComponentOptions = {
+export type ComponentOptions<T> = {
   name: string,
-  component: Component
+  component: Component<T>
 }

@@ -3,13 +3,20 @@
   "version": "1.0.0",
   "description": "Typure is a lightweight TypeScript framework that focuses on native HTML development and componentization.",
   "engines": {
-    "node": ">= 18.0.0",
-    "pnpm": ">= 7.0.0"
+    "node": ">= 14.0.0",
+    "pnpm": ">= 6.0.0"
   },
   "workspaces": {
     "packages": [
       "packages/*"
     ]
+  },
+  "scripts": {
+    "build:cli": "pnpm --dir ./packages/typure-cli build",
+    "build:shared": "pnpm --dir ./packages/shared build",
+    "build:core": "pnpm --dir ./packages/typure-core build",
+    "build:merge": "pnpm run build:cli && pnpm run build:shared",
+    "dev": "pnpm --dir ./packages/typure-ui dev"
   },
   "repository": {
     "type": "git",

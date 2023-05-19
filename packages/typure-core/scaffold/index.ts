@@ -1,5 +1,5 @@
 
-const isString = (val: unknown): val is string => typeof val === 'string'
+import { isString } from '@typure/shared'
 export abstract class Component extends HTMLElement {
 
   constructor() {
