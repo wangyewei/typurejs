@@ -1,20 +1,9 @@
-import { Component } from '@typure/core'
-interface NavbarProps {
+import { defineComponent } from '@typure/core'
+
+type NavBar = {
   title: string
 }
-export class NavBar extends Component {
-  private readonly props: NavbarProps
-  constructor() {
-    super()
-    this.props = JSON.parse(this.getAttribute('props')!)
-  }
 
-  render() {
-
-    return `
-    <p align="center">
-      <h3 align="center">${this.props.title}</h3>
-    </p>
-    `
-  }
-}
+defineComponent<NavBar>('nav-bar', (props: NavBar) => {
+  return `<div>${props.title}</div>`
+}, { title: 'hello, Typure.js' })

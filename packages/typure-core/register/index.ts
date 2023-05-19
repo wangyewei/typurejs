@@ -1,6 +1,18 @@
-import type { ComponentOptions } from '../types/components'
+import { Component } from '../scaffold'
 
-export function defineComponent(option: ComponentOptions): void {
-  const { name, component } = option
-  globalThis.customElements.define(name, component)
+
+type PropType = Record<string, any>
+export function defineComponent<T extends PropType>(
+  name: string,
+  props: T = {} as T,
+  renderer: (props: T) => HTMLElement | string,
+) {
+  const componentImpl = class extends Component<T> {
+    props = props
+    render(): string | HTMLElement {
+      return renderer(this.props)
+    }
+  }
+
+  globalThis.customElements.define(name, componentImpl);
 }

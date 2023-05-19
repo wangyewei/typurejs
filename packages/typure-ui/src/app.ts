@@ -1,16 +1,9 @@
-import { Component, defineComponent } from '@typure/core'
-import { NavBar } from '../lib/nav-bar'
+import { defineComponent } from '@typure/core'
 
-defineComponent({ name: 'nav-bar', component: NavBar })
-export default class App extends Component {
-
-  constructor() {
-    super()
-  }
-
-  render() {
-    const props = { title: 'hello typure.js' }
-    return `<nav-bar props='${JSON.stringify(props)}'></nav-bar>`
-  }
-}
-
+defineComponent<{ label: string }>('my-button', { label: 'Click me' }, props => {
+  return `
+  <button onclick="alert('Button clicked!')">
+    ${props.label}
+  </button>
+`
+});
