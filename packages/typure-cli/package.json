@@ -12,7 +12,7 @@
     "typure-cli": "./bin.js"
   },
   "scripts": {
-    "clean": "rm -rf ./dist",
+    "clean": "rimraf ./dist",
     "build": "npm run clean && tsc"
   },
   "dependencies": {
@@ -21,6 +21,7 @@
     "execa": "^7.1.1",
     "fs-extra": "^11.1.1",
     "nanospinner": "^1.1.0",
+    "rimraf": "^5.0.1",
     "typescript": "^5.0.4",
     "vite": "^4.3.8"
   }

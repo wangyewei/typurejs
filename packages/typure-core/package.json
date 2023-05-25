@@ -1,14 +1,25 @@
 {
-  "name": "typure-core",
-  "version": "0.0.0",
-  "description": "",
+  "name": "@typure/core",
+  "version": "0.0.1",
   "type": "module",
-  "private":"true",
-  "keywords": [],
-  "author": "wangyewei<wangyewei1@foxmain.com>",
-  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.umd.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs"
+    }
+  },
+  "scripts": {
+    "build": "typure-cli build -dt tsc"
+  },
   "dependencies": {
-    "vite": "^4.3.8",
-    "@typure/shared": "workspace:*"
+    "@typure/cli": "workspace:*",
+    "@typure/shared": "workspace:*",
+    "vite": "^4.3.8"
   }
 }

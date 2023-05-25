@@ -4,7 +4,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: 'index.ts',
-      name: '@typure/shred',
+      name: '@typure',
       fileName: 'index'
     }
   }
