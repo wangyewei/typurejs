@@ -4,6 +4,26 @@
 
 Typure is a lightweight TypeScript library that focuses on native HTML development and componentization. it equips developers with essential tools and flexibility to create efficient, maintainable, and highly customizable web applications.
 
+## How to use (current version)
+
+```typescript
+import { PureElement } from "@typure/core"
+
+class MyElement extends PureElement {
+  render(): string | HTMLElement {
+    return `
+    <p align="center">
+      <h1 onclick="alert('Button clicked!')" align="center">
+        hello, Typre.js
+      </h1>
+    </p>
+  `
+  }
+}
+
+globalThis.customElements.define("my-app", MyElement)
+```
+
 ## License
 
 [MIT](https://opensource.org/licenses/MIT)

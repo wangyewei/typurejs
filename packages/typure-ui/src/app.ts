@@ -1,4 +1,3 @@
-// import { defineComponent } from '@typure/core'
 import { PureElement } from '@typure/core'
 
 class MyElement extends PureElement {

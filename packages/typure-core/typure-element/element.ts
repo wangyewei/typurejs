@@ -2,9 +2,8 @@ import { isString, isHTMLElement } from '@typure/shared'
 import { warn } from '@typure/runtime'
 
 /**
- * The core class that manages component state
- * and properties. When the state changes, the 'update'
- * function is called to update the user inerface.
+ * The core class that manages component state and properties. When the
+ * state changes, the 'update' function is called to update the user inerface.
  */
 
 export class PureElement extends HTMLElement {
@@ -31,9 +30,8 @@ export class PureElement extends HTMLElement {
 
   }
   /**
-   * Implemented by derived subclasses, providing
-   * derived subclasses, providing a description of 
-   * the user interface.
+   * Implemented by derived subclasses, providing derived subclasses,
+   * providing a description of the user interface.
    */
   render(): HTMLElement | string {
     throw Error('Must implement the render method')
