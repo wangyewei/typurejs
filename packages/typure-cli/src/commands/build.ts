@@ -15,7 +15,8 @@ export async function buildTask(option: BuildTaskOption) {
     await remove(path.resolve(__dirname, 'dist'))
     await viteBuild({
       root: __dirname,
-      configFile: './vite.config.ts'
+      configFile: './vite.config.ts',
+      ...option
     })
 
     await execa('tsc')

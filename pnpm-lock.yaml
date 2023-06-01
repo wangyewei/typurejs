@@ -6,9 +6,19 @@ importers:
     specifiers:
       '@typure/cli': ^0.0.1
       typescript: ^5.0.4
+      vite: ^4.3.8
     dependencies:
       '@typure/cli': link:packages/typure-cli
       typescript: 5.0.4
+      vite: 4.3.8
+
+  packages/runtime:
+    specifiers:
+      '@typure/cli': workspace:*
+      vite: ^4.3.8
+    dependencies:
+      '@typure/cli': link:../typure-cli
+      vite: 4.3.8
 
   packages/shared:
     specifiers:
@@ -41,10 +51,12 @@ importers:
   packages/typure-core:
     specifiers:
       '@typure/cli': workspace:*
+      '@typure/runtime': workspace:*
       '@typure/shared': workspace:*
       vite: ^4.3.8
     dependencies:
       '@typure/cli': link:../typure-cli
+      '@typure/runtime': link:../runtime
       '@typure/shared': link:../shared
       vite: 4.3.8
 

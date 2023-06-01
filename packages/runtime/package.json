@@ -1,5 +1,5 @@
 {
-  "name": "@typure/core",
+  "name": "@typure/runtime",
   "version": "0.0.1",
   "type": "module",
   "files": [
@@ -7,7 +7,7 @@
   ],
   "main": "dist/index.umd.js",
   "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.js",
@@ -19,8 +19,6 @@
   },
   "dependencies": {
     "@typure/cli": "workspace:*",
-    "@typure/shared": "workspace:*",
-    "@typure/runtime": "workspace:*",
     "vite": "^4.3.8"
   }
 }
