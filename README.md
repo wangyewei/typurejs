@@ -2,7 +2,7 @@
 
 ## What is Typure?
 
-typure.js is a lightweight typescript library for building user interfaces. Based on native web components. Efficient, simple, flexible and no virtual DOM, no compile-time.
+`typure.js` is a lightweight typescript library for building user interfaces. Based on native web components. **Efficient**, **simple**, **flexible** and **no virtual DOM**, **no compile-time**.
 
 ## Overview
 
@@ -26,7 +26,10 @@ class AppElement extends PureElement {
     // Render element DOM by return a `jsx-like` template
     return `
     <p align="center">
-      <input pure-state="${this.mood}" placeholder="type your mood"/>
+      <input value="${this.mood}" 
+             placeholder="type your mood" 
+             @input="${(e) => (this.mood = e)}"
+      />
       <h1 align="center">
         Hello, this is Typre.js.
         You seem to be in a ${this.mood} mood.
