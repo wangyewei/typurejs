@@ -2,26 +2,42 @@
 
 ## What is Typure?
 
-Typure is a lightweight TypeScript library that focuses on native HTML development and componentization. it equips developers with essential tools and flexibility to create efficient, maintainable, and highly customizable web applications.
+typure.js is a lightweight typescript library for building user interfaces. Based on native web components. Efficient, simple, flexible and no virtual DOM, no compile-time.
 
-## How to use (current version)
+## Overview
+
+_Maybe we'll embrace functions next._
+
+`typure.js` uses a 'jsx-like' template string to render the Shadow DOM of the element. It also uses decorators to create responsive variables, implementing a javascript MVC framework with state-driven views.
 
 ```typescript
-import { PureElement } from "@typure/core"
+import { PureElement, defineComponent } from "@typure/core";
+import { state } from "@typre/reactive";
 
-class MyElement extends PureElement {
+// This class defines the `typure-element`.
+class AppElement extends PureElement {
+  // This decorator is used to create a responsive state variable.
+  // This can be used in pure-elemnt to trigger an update of the
+  // corresponding view when the state changes.
+  @state<string>()
+  mood = "great";
+
   render(): string | HTMLElement {
+    // Render element DOM by return a `jsx-like` template
     return `
     <p align="center">
-      <h1 onclick="alert('Button clicked!')" align="center">
-        hello, Typre.js
+      <input pure-state="${this.mood}" placeholder="type your mood"/>
+      <h1 align="center">
+        Hello, this is Typre.js.
+        You seem to be in a ${this.mood} mood.
       </h1>
     </p>
-  `
+  `;
   }
 }
-
-globalThis.customElements.define("my-app", MyElement)
+// This function registers a `pure-element` that can be used directly
+// in the html template.
+defineComponent("app", AppElement);
 ```
 
 ## License

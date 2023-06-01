@@ -1,6 +1,5 @@
-import { isString, isHTMLElement } from '@typure/shared'
+import { isString, isHTMLElement } from "@typure/shared"
 import { warn } from '@typure/runtime'
-
 /**
  * The core class that manages component state and properties. When the
  * state changes, the 'update' function is called to update the user inerface.
