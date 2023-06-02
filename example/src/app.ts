@@ -1,16 +1,22 @@
 import { PureElement } from '@typure/core'
-
 class MyElement extends PureElement {
+  title: string
 
-  render(): string | HTMLElement {
+  constructor() {
+    super()
+    this.title = 'event called'
+  }
+  handleClick() {
+    alert(`Clicked on ${this.title}`)
+  }
+
+  provideThis(): PureElement {
+    return this
+  }
+  render() {
     return `
-    <p align="center">
-      <h1 onclick="alert('Button clicked!')" align="center">
-        hello, Typre.js
-      </h1>
-    </p>
-  `
+      <div @click="handleClick">${this.title}</div>
+    `
   }
 }
-
-globalThis.customElements.define('my-app', MyElement)
+customElements.define('my-element', MyElement)

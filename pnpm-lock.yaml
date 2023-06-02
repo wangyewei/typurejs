@@ -22,6 +22,16 @@ importers:
       '@typure/core': link:../packages/typure-core
       vite: 4.3.8
 
+  packages/compile:
+    specifiers:
+      '@typure/cli': ^0.0.1
+      '@typure/core': workspace:*
+      vite: ^4.3.8
+    dependencies:
+      '@typure/cli': link:../../typure-cli
+      '@typure/core': link:../typure-core
+      vite: 4.3.8
+
   packages/runtime:
     specifiers:
       '@typure/cli': ^0.0.1
@@ -41,11 +51,13 @@ importers:
   packages/typure-core:
     specifiers:
       '@typure/cli': ^0.0.1
+      '@typure/compile': workspace:*
       '@typure/runtime': workspace:*
       '@typure/shared': workspace:*
       vite: ^4.3.8
     dependencies:
       '@typure/cli': link:../../typure-cli
+      '@typure/compile': link:../compile
       '@typure/runtime': link:../runtime
       '@typure/shared': link:../shared
       vite: 4.3.8
