@@ -5,5 +5,5 @@
     "declarationDir": "dist/types",
     "emitDeclarationOnly": true
   },
-  "include": ["./src/*", "index.ts", "h.ts"]
+  "include": ["./src/*"]
 }

@@ -12,10 +12,10 @@ import { parse } from '@typure/compile'
  * state changes, the 'update' function is called to update the user inerface.
  */
 export class PureElement extends HTMLElement {
-
-
+  shadowRoot!: ShadowRoot
   constructor() {
     super()
+    // this.attachShadow({ mode: 'open' })
   }
   /**
    * The jsx-like template string returned in render implemented by the subclass is 
@@ -33,7 +33,12 @@ export class PureElement extends HTMLElement {
     const renderdContent = this.render()
 
     if (isString(renderdContent)) {
-      this.appendChild(parse.call(this, renderdContent))
+      this.shadowRoot
+        ? this.shadowRoot
+          .appendChild(parse.call(this, renderdContent)
+            .cloneNode(true)
+          )
+        : this.appendChild(parse.call(this, renderdContent))
     } else if (isHTMLElement(renderdContent)) {
       this.appendChild(renderdContent)
     } else {

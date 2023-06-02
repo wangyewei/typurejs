@@ -10,9 +10,6 @@ class MyElement extends PureElement {
     alert(`Clicked on ${this.title}`)
   }
 
-  provideThis(): PureElement {
-    return this
-  }
   render() {
     return `
       <div @click="handleClick">${this.title}</div>
