@@ -1,6 +1,5 @@
 {
-  "name": "typure-ui",
-  "version": "1.0.0",
+  "name": "example",
   "type": "module",
   "scripts": {
     "dev": "vite"

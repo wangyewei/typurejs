@@ -2,6 +2,7 @@
   "name": "@typure/cli",
   "version": "0.0.1",
   "type": "module",
+  "private": true,
   "files": [
     "dist",
     "bin.js"
@@ -9,7 +10,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "typure-cli": "./bin.js"
+    "typure-cli": "bin.js"
   },
   "scripts": {
     "clean": "rimraf ./dist",
@@ -24,5 +25,9 @@
     "rimraf": "^5.0.1",
     "typescript": "^5.0.4",
     "vite": "^4.3.8"
-  }
+  },
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }

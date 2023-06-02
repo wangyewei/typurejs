@@ -18,7 +18,7 @@
     "build": "typure-cli build -dt tsc"
   },
   "dependencies": {
-    "@typure/cli": "workspace:*",
+    "@typure/cli": "^0.0.1",
     "@typure/shared": "workspace:*",
     "@typure/runtime": "workspace:*",
     "vite": "^4.3.8"

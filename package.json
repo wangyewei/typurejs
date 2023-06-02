@@ -1,23 +1,26 @@
 {
   "name": "typurejs",
   "version": "1.0.0",
-  "description": "Typure is a lightweight TypeScript framework that focuses on native HTML development and componentization.",
+  "private": true,
+  "description": "typure.js is a lightweight typescript library for building user interfaces. Based on native web components. Efficient, simple, flexible and no virtual DOM, no compile-time.",
   "engines": {
     "node": ">= 14.0.0",
     "pnpm": ">= 6.0.0"
   },
   "workspaces": {
     "packages": [
-      "packages/*"
+      "packages/*",
+      "example",
+      "typure-cli"
     ]
   },
   "scripts": {
-    "build:cli": "pnpm --dir ./packages/typure-cli build",
+    "build:cli": "pnpm --dir ./typure-cli build",
     "build:shared": "pnpm --dir ./packages/shared build",
     "build:core": "pnpm --dir ./packages/typure-core build",
     "build:runtime": "pnpm --dir ./packages/runtime build",
     "build:merge": "pnpm run build:cli && pnpm run build:shared && pnpm run build:runtime && pnpm run build:core",
-    "dev": "pnpm --dir ./packages/typure-ui dev"
+    "dev": "pnpm --dir ./example dev"
   },
   "repository": {
     "type": "git",
@@ -40,6 +43,7 @@
   "homepage": "https://github.com/wangyewei/Typurejs#readme",
   "dependencies": {
     "@typure/cli": "^0.0.1",
+    "@typure/core": "^0.0.1",
     "typescript": "^5.0.4",
     "vite": "^4.3.8"
   }
