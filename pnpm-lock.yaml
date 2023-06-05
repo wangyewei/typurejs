@@ -82,7 +82,29 @@ importers:
       typescript: 5.0.4
       vite: 4.3.8
 
+  typure-plugins/babel-jsx-plugin:
+    specifiers:
+      '@babel/plugin-syntax-jsx': ^7.21.4
+      '@typure/cli': workspace:^0.0.1
+    dependencies:
+      '@babel/plugin-syntax-jsx': 7.21.4
+      '@typure/cli': link:../../typure-cli
+
 packages:
+
+  /@babel/helper-plugin-utils/7.21.5:
+    resolution: {integrity: sha512-0WDaIlXKOX/3KfBK/dwP1oQGiPh6rjMkT7HIRv7i5RR2VUMwrx5ZL0dwBkKx7+SW1zwNdgjHd34IMk5ZjTeHVg==}
+    engines: {node: '>=6.9.0'}
+    dev: false
+
+  /@babel/plugin-syntax-jsx/7.21.4:
+    resolution: {integrity: sha512-5hewiLct5OKyh6PLKEYaFclcqtIgCb6bmELouxjF6up5q3Sov7rOayW4RwhbaBL0dit8rA80GNfY+UuDp2mBbQ==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+    dependencies:
+      '@babel/helper-plugin-utils': 7.21.5
+    dev: false
 
   /@esbuild/android-arm/0.17.19:
     resolution: {integrity: sha512-rIKddzqhmav7MSmoFCmDIb6e2W57geRsM94gV2l38fzhXMwq7hZoClug9USI2pFRGL06f4IOPHHpFNOkWieR8A==}

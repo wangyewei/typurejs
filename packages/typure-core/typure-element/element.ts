@@ -15,7 +15,6 @@ export class PureElement extends HTMLElement {
   shadowRoot!: ShadowRoot
   constructor() {
     super()
-    // this.attachShadow({ mode: 'open' })
   }
   /**
    * The jsx-like template string returned in render implemented by the subclass is 
@@ -26,25 +25,25 @@ export class PureElement extends HTMLElement {
    * [x] completes the construction of responsive variable
    */
   connectedCallback() {
+    this.shadowRoot = this.attachShadow({ mode: 'open' })
     this.renderElement()
   }
 
+  /**
+   * Adds the render content of the element to the Shadow DOM. It first
+   * take the rendered content and the handles it diffrently depending on the
+   * type of content.
+   */
   renderElement() {
     const renderdContent = this.render()
-
     if (isString(renderdContent)) {
-      this.shadowRoot
-        ? this.shadowRoot
-          .appendChild(parse.call(this, renderdContent)
-            .cloneNode(true)
-          )
-        : this.appendChild(parse.call(this, renderdContent))
+      const parsedContent = parse.call(this, renderdContent)
+      this.shadowRoot.appendChild(parsedContent.cloneNode(true))
     } else if (isHTMLElement(renderdContent)) {
-      this.appendChild(renderdContent)
+      this.shadowRoot.appendChild(renderdContent)
     } else {
       warn(`Incorrect element is being rendered`, renderdContent)
     }
-
   }
   /**
    * Implemented by derived subclasses, providing derived subclasses,

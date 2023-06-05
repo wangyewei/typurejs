@@ -2,3 +2,4 @@ packages:
   - "packages/*"
   - "typure-cli"
   - "example"
+  - "typure-plugins/*"

@@ -12,8 +12,8 @@ class MyElement extends PureElement {
 
   render() {
     return `
-      <div @click="handleClick">${this.title}</div>
+      <div @click="handleClick"> ${this.title} </div>
     `
   }
 }
-customElements.define('my-element', MyElement)
+export default MyElement

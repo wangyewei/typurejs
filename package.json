@@ -11,7 +11,8 @@
     "packages": [
       "packages/*",
       "example",
-      "typure-cli"
+      "typure-cli",
+      "typure-plugins/*"
     ]
   },
   "scripts": {
@@ -20,6 +21,7 @@
     "build:core": "pnpm --dir ./packages/typure-core build",
     "build:runtime": "pnpm --dir ./packages/runtime build",
     "build:compile": "pnpm --dir ./packages/compile build",
+    "build:plugin": "pnpm --dir ./typure-plugins/babel-jsx-plugin build",
     "build:merge": "pnpm run build:cli && pnpm run build:shared && pnpm run build:runtime && pnpm run build:core",
     "dev": "pnpm --dir ./example dev"
   },
