@@ -12,7 +12,10 @@ class MyElement extends PureElement {
 
   render() {
     return `
-      <div @click="handleClick"> ${this.title} </div>
+      <div @click="handleClick"> 
+        hello, this is 
+        <div>typure.js</div>
+      </div>
     `
   }
 }

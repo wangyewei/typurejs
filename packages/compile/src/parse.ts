@@ -1,24 +1,37 @@
-import type { PureElement } from "@typure/core"
-export function parse(this: PureElement, renderContent: string): DocumentFragment {
-  const parser = new DOMParser()
-  const doc = parser.parseFromString(renderContent, 'text/html')
-  const elements: HTMLCollection = doc.body.children
 
-  const fragment = document.createDocumentFragment()
-  for (let i = 0; i < elements.length; i++) {
-    const element = elements[i]
-    const attrs = element.attributes
+export const processElement = (element: Element): Node => {
 
-    for (let j = 0; j < attrs.length; j++) {
-      const attr = attrs[j]
-      if (attr.name.startsWith("@")) {
-        const eventName = attr.name.slice(1);
 
-        this.addEventListener(eventName, (this as Record<string, any>)[attr.value])
-      }
-    }
-    fragment.appendChild(element.cloneNode(true))
+  const clonedElement = element.cloneNode(true)
+
+  clonedElement.addEventListener('click', () => {
+    console.log('ok')
+  })
+
+  for (let i = 0; i < element.children.length; i++) {
+    const child = element.children[i];
+    const clonedChild = processElement(child)
+    clonedElement.appendChild(clonedChild);
   }
+  return clonedElement
+}
 
-  return fragment
+export const createElement = (elements: HTMLCollection): DocumentFragment => {
+  const root = document.createDocumentFragment()
+
+  Array.from(elements).forEach(element => {
+    root.appendChild(processElement(element))
+  })
+
+  return root
+
+}
+
+export const parseElement = (templateHTMLstr: string): HTMLCollection => {
+  const parser = new DOMParser()
+  return parser.parseFromString(templateHTMLstr, 'text/html').body.children
+}
+
+export const parse = (templateHTMLstr: string): DocumentFragment => {
+  return createElement(parseElement(templateHTMLstr))
 }

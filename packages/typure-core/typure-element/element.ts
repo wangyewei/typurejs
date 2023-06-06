@@ -38,7 +38,22 @@ export class PureElement extends HTMLElement {
     const renderdContent = this.render()
     if (isString(renderdContent)) {
       const parsedContent = parse.call(this, renderdContent)
-      this.shadowRoot.appendChild(parsedContent.cloneNode(true))
+      //////////
+      const bindEventListeners = (element: Element | DocumentFragment) => {
+        element.addEventListener('click', () => {
+          console.log('ok');
+        });
+
+        for (let i = 0; i < element.children.length; i++) {
+          const child = element.children[i];
+          bindEventListeners(child);
+        }
+      };
+      const fragment = (parsedContent as DocumentFragment).cloneNode(false) as DocumentFragment
+
+      bindEventListeners(fragment)
+      //////////////
+      this.shadowRoot.appendChild(fragment)
     } else if (isHTMLElement(renderdContent)) {
       this.shadowRoot.appendChild(renderdContent)
     } else {
