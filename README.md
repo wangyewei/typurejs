@@ -10,6 +10,7 @@ _Maybe we'll embrace functions next._
 
 `typure.js` uses a 'jsx-like' template string to render the Shadow DOM of the element. It also uses decorators to create responsive variables, implementing a javascript MVC framework with state-driven views.
 
+<!--
 ```typescript
 import { PureElement, defineComponent } from "@typure/core"
 import { state } from "@typre/reactive"
@@ -26,8 +27,8 @@ class AppElement extends PureElement {
     // Render element DOM by return a `jsx-like` template
     return `
     <p align="center">
-      <input value="${this.mood}" 
-             placeholder="type your mood" 
+      <input value="${this.mood}"
+             placeholder="type your mood"
              @input="${(e) => (this.mood = e)}"
       />
       <h1 align="center">
@@ -41,6 +42,40 @@ class AppElement extends PureElement {
 // This function registers a `pure-element` that can be used directly
 // in the html template.
 defineComponent("app", AppElement)
+``` -->
+
+```typescript
+// app.ts
+import { PureElement } from "@typure/core"
+
+class MyElement extends PureElement {
+  count: number = 0
+
+  constructor() {
+    super()
+  }
+  countAdd() {
+    this.count++
+  }
+
+  render() {
+    return `
+     <div>
+      <h2 align="center">hello, this is typure.js</h2>
+      <p align="center">
+        <span>${this.count}</span>
+        <button @click="countAdd">count++</button>
+      </p>
+     </div>
+    `
+  }
+}
+export default MyElement
+
+// main.ts
+import MyElement from "./app"
+
+customElements.define("my-element", MyElement)
 ```
 
 ## License
