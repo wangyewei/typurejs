@@ -52,6 +52,7 @@ export class PureElement extends HTMLElement {
              * [x]: PureEventReturnType
              */
             (this as Record<string, any>)[eventHandler].call(this, e)
+            this.update()
             e.stopPropagation()
           }, false);
           (element as HTMLElement).removeAttribute(attr.name)
@@ -72,7 +73,7 @@ export class PureElement extends HTMLElement {
     const renderdContent = this.render()
     if (isString(renderdContent)) {
       const parsedContent = parse.call(this, renderdContent)
-      this.shadowRoot.appendChild(this.bindEvent(parsedContent))
+      this.shadowRoot.appendChild(parsedContent)
       /**
        * start with the children[0], it's because the first child of the  
        * `shadowRoot` is fragement.
@@ -93,7 +94,13 @@ export class PureElement extends HTMLElement {
   update(fn?: () => any) {
     if (!this.shadowRoot) {
       this.shadowRoot = this.attachShadow({ mode: 'open' })
+    } else {
+      this.shadowRoot.innerHTML = ``
+      const parsedContent = parse.call(this, this.render() as string)
+      this.shadowRoot.appendChild(parsedContent)
+      this.bindEvent(this.shadowRoot.children[0])
     }
+
     fn && isFunction(fn) && fn()
   }
   /**

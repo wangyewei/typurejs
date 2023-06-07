@@ -20,6 +20,7 @@
   "dependencies": {
     "@typure/cli": "^0.0.1",
     "@typure/core": "workspace:*",
+    "@typure/runtime": "workspace:*",
     "vite": "^4.3.8"
   }
 }

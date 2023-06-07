@@ -26,10 +26,12 @@ importers:
     specifiers:
       '@typure/cli': ^0.0.1
       '@typure/core': workspace:*
+      '@typure/runtime': workspace:*
       vite: ^4.3.8
     dependencies:
       '@typure/cli': link:../../typure-cli
       '@typure/core': link:../typure-core
+      '@typure/runtime': link:../runtime
       vite: 4.3.8
 
   packages/runtime:

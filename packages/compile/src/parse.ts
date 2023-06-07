@@ -1,3 +1,5 @@
+import { warn } from "@typure/runtime"
+
 /**
  * Iterate over the nodes of the lement to obtain node infomations.
  * which is convenient to collect events in the fucure and precess the 
@@ -10,11 +12,13 @@ export const processElement = (element: Element): Node => {
    * can be preserved, avoding direct modification the original element node.
    */
   const clonedElement = element.cloneNode(true)
-  for (let i = 0; i < element.children.length - 1; i++) {
+
+  for (let i = 0; i < element.children.length; i++) {
     const child = element.children[i];
     const clonedChild = processElement(child)
     clonedElement.appendChild(clonedChild);
   }
+
   return clonedElement
 }
 
@@ -27,9 +31,12 @@ export const processElement = (element: Element): Node => {
  */
 export const createElement = (elements: HTMLCollection): DocumentFragment => {
   const root = document.createDocumentFragment()
-  Array.from(elements).forEach(element => {
-    root.appendChild(processElement(element))
-  })
+  root.appendChild(elements[0])
+
+  if (__DEV__ && elements.length > 1) {
+    warn('Elements under the render function must have a root node.', [])
+  }
+
   return root
 }
 
