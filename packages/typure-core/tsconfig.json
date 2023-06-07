@@ -9,5 +9,5 @@
       "src": ["./src/"]
     }
   },
-  "include": ["**/*"]
+  "include": ["**/*", "./global.d.ts"]
 }

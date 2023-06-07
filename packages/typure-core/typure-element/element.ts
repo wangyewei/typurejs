@@ -4,7 +4,7 @@
  * @copyright 2023-preset Yewei Wang
  */
 
-import { isString, isHTMLElement } from "@typure/shared"
+import { isString, isHTMLElement, isFunction } from "@typure/shared"
 import { warn } from '@typure/runtime'
 import { parse } from '@typure/compile'
 /**
@@ -25,8 +25,9 @@ export class PureElement extends HTMLElement {
    * [x] completes the construction of responsive variable
    */
   connectedCallback() {
-    this.shadowRoot = this.attachShadow({ mode: 'open' })
-    this.renderElement()
+    this.update(
+      () => this.renderElement()
+    )
   }
 
   /**
@@ -36,29 +37,27 @@ export class PureElement extends HTMLElement {
    */
   renderElement() {
     const renderdContent = this.render()
+
     if (isString(renderdContent)) {
       const parsedContent = parse.call(this, renderdContent)
-      //////////
-      const bindEventListeners = (element: Element | DocumentFragment) => {
-        element.addEventListener('click', () => {
-          console.log('ok');
-        });
-
-        for (let i = 0; i < element.children.length; i++) {
-          const child = element.children[i];
-          bindEventListeners(child);
-        }
-      };
-      const fragment = (parsedContent as DocumentFragment).cloneNode(false) as DocumentFragment
-
-      bindEventListeners(fragment)
-      //////////////
-      this.shadowRoot.appendChild(fragment)
+      this.shadowRoot.appendChild((parsedContent as DocumentFragment).cloneNode(true))
     } else if (isHTMLElement(renderdContent)) {
       this.shadowRoot.appendChild(renderdContent)
-    } else {
+    } else if (__DEV__) {
       warn(`Incorrect element is being rendered`, renderdContent)
     }
+  }
+
+  /**
+   * Update the current element, creating shadowRoot if it is the first update.
+   * xpected features:
+   * [x] reactive element
+   */
+  update(fn?: () => any) {
+    if (!this.shadowRoot) {
+      this.shadowRoot = this.attachShadow({ mode: 'open' })
+    }
+    fn && isFunction(fn) && fn()
   }
   /**
    * Implemented by derived subclasses, providing derived subclasses,
