@@ -6,15 +6,16 @@ class MyElement extends PureElement {
     super()
     this.title = 'event called'
   }
-  handleClick() {
-    alert(`Clicked on ${this.title}`)
+  handleClick(e: Event) {
+    // alert(`Clicked on ${this.title}`)
+    console.log(e)
   }
 
   render() {
     return `
-      <div @click="handleClick"> 
+      <div align="center"> 
         hello, this is 
-        <div>typure.js</div>
+        <div align="center" @click="handleClick">typure.js</div>
       </div>
     `
   }
