@@ -4,15 +4,12 @@ importers:
 
   .:
     specifiers:
-      '@typure/cli': ^0.0.1
-      '@typure/core': ^0.0.1
+      minimist: ^1.2.8
       typescript: ^5.0.4
-      vite: ^4.3.8
     dependencies:
-      '@typure/cli': link:typure-cli
-      '@typure/core': link:packages/typure-core
       typescript: 5.0.4
-      vite: 4.3.8
+    devDependencies:
+      minimist: 1.2.8
 
   example:
     specifiers:
@@ -69,20 +66,22 @@ importers:
       '@types/fs-extra': ^11.0.1
       commander: ^10.0.1
       execa: ^7.1.1
+      fs: ^0.0.1-security
       fs-extra: ^11.1.1
       nanospinner: ^1.1.0
       rimraf: ^5.0.1
+      rollup: ^3.24.0
       typescript: ^5.0.4
-      vite: ^4.3.8
     dependencies:
       '@types/fs-extra': 11.0.1
       commander: 10.0.1
       execa: 7.1.1
+      fs: 0.0.1-security
       fs-extra: 11.1.1
       nanospinner: 1.1.0
       rimraf: 5.0.1
+      rollup: 3.24.0
       typescript: 5.0.4
-      vite: 4.3.8
 
   typure-plugins/babel-jsx-plugin:
     specifiers:
@@ -473,6 +472,10 @@ packages:
       universalify: 2.0.0
     dev: false
 
+  /fs/0.0.1-security:
+    resolution: {integrity: sha512-3XY9e1pP0CVEUCdj5BmfIZxRBTSDycnbqhIOGec9QYtmVH2fbLpj86CFWkrNOkt/Fvty4KZG5lTglL9j/gJ87w==}
+    dev: false
+
   /fsevents/2.3.2:
     resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
@@ -559,6 +562,10 @@ packages:
       brace-expansion: 2.0.1
     dev: false
 
+  /minimist/1.2.8:
+    resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
+    dev: true
+
   /minipass/6.0.2:
     resolution: {integrity: sha512-MzWSV5nYVT7mVyWCwn2o7JH13w2TBRmmSqSRCKzTw+lmft9X4z+3wjvs06Tzijo5z4W/kahUCDpRXTF+ZrmF/w==}
     engines: {node: '>=16 || 14 >=14.17'}
@@ -631,6 +638,14 @@ packages:
 
   /rollup/3.22.0:
     resolution: {integrity: sha512-imsigcWor5Y/dC0rz2q0bBt9PabcL3TORry2hAa6O6BuMvY71bqHyfReAz5qyAqiQATD1m70qdntqBfBQjVWpQ==}
+    engines: {node: '>=14.18.0', npm: '>=8.0.0'}
+    hasBin: true
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: false
+
+  /rollup/3.24.0:
+    resolution: {integrity: sha512-OgraHOIg2YpHQTjl0/ymWfFNBEyPucB7lmhXrQUh38qNOegxLapSPFs9sNr0qKR75awW41D93XafoR2QfhBdUQ==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:

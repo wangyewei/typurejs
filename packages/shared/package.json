@@ -20,5 +20,11 @@
   "dependencies": {
     "@typure/cli": "^0.0.1",
     "vite": "^4.3.8"
+  },
+  "buildOptions": {
+    "formats": [
+      "esm-bundler",
+      "cjs"
+    ]
   }
 }
