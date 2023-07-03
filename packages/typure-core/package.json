@@ -14,14 +14,19 @@
       "require": "./dist/index.umd.cjs"
     }
   },
-  "scripts": {
-    "build": "typure-cli build -dt tsc"
+  "buildOptions": {
+    "name": "TypureCore",
+    "compat": true,
+    "formats": [
+      "esm-bundler",
+      "cjs"
+    ]
   },
   "dependencies": {
     "@typure/cli": "^0.0.1",
-    "@typure/shared": "workspace:*",
-    "@typure/runtime": "workspace:*",
     "@typure/compile": "workspace:*",
+    "@typure/runtime": "workspace:*",
+    "@typure/shared": "workspace:*",
     "vite": "^4.3.8"
   }
 }

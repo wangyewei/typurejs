@@ -3,10 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "buildOptions": {
+    "name": "VueCompilerCore",
+    "compat": true,
+    "formats": [
+      "esm-bundler",
+      "cjs"
+    ]
   },
-  "keywords": [],
+  "keywords": [
+    "typure"
+  ],
   "author": "",
-  "license": "ISC"
+  "license": "MIT"
 }

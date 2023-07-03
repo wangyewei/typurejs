@@ -24,7 +24,6 @@
     "fs-extra": "^11.1.1",
     "nanospinner": "^1.1.0",
     "rimraf": "^5.0.1",
-    "rollup": "^3.24.0",
     "typescript": "^5.0.4"
   },
   "author": "",

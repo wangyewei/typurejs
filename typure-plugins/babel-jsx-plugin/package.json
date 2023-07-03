@@ -19,8 +19,8 @@
     "build": "typure-cli build -dt tsc"
   },
   "dependencies": {
-    "@typure/cli": "workspace:^0.0.1",
-    "@babel/plugin-syntax-jsx": "^7.21.4"
+    "@babel/plugin-syntax-jsx": "^7.21.4",
+    "@typure/cli": "workspace:^0.0.1"
   },
   "peerDependencies": {
     "@babel/core": "^7.22.1"
