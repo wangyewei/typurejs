@@ -8,14 +8,6 @@
     "node": ">= 14.0.0",
     "pnpm": ">= 6.0.0"
   },
-  "workspaces": {
-    "packages": [
-      "packages/*",
-      "example",
-      "typure-cli",
-      "typure-plugins/*"
-    ]
-  },
   "scripts": {
     "build": "node scripts/build.js",
     "dev": "pnpm --dir ./example install && pnpm --dir ./example dev"
