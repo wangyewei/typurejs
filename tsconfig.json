@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "target": "ESNext",
+    "baseUrl": ".",
+    "outDir": "temp",
     "useDefineForClassFields": true,
     "module": "ESNext",
     "moduleResolution": "node",

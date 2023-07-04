@@ -80,7 +80,7 @@ export class PureElement extends HTMLElement {
        */
       this.bindEvent(this.shadowRoot.children[0])
     } else if (isHTMLElement(renderdContent)) {
-      this.shadowRoot.appendChild(renderdContent)
+      this.shadowRoot.appendChild((renderdContent as HTMLElement).cloneNode(true))
     } else if (__DEV__) {
       warn(`Incorrect element is being rendered`, renderdContent)
     }

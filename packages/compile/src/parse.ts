@@ -1,3 +1,4 @@
+//@ts-ignore
 import { warn } from "@typure/runtime"
 
 /**
@@ -32,7 +33,7 @@ export const processElement = (element: Element): Node => {
 export const createElement = (elements: HTMLCollection): DocumentFragment => {
   const root = document.createDocumentFragment()
   root.appendChild(elements[0])
-
+  //@ts-ignore
   if (__DEV__ && elements.length > 1) {
     warn('Elements under the render function must have a root node.', [])
   }

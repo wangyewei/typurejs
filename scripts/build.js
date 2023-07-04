@@ -47,6 +47,7 @@ const formats = args.formats || args.f
 const devOnly = args.devOnly || args.d
 const prodOnly = !devOnly && (args.prodOnly || args.p)
 const sourceMap = args.sourcemap || args.s
+const buildTypes = args.withTypes || args.t
 
 const isRelease = args.release
 
@@ -62,6 +63,22 @@ async function run() {
 
     await buildAll(resolvedTargets)
     checkAllSizes(resolvedTargets)
+
+    if (buildTypes) {
+      await execa(
+        'pnpm',
+        [
+          'run',
+          'build-dts',
+          ...(targets.length
+            ? ['--environment', `TARGETS:${resolvedTargets.join(',')}`]
+            : []),
+        ],
+        {
+          stdio: 'inherit',
+        }
+      )
+    }
   } catch (err) {
     console.log(`Build faild: ${err}`)
   }
