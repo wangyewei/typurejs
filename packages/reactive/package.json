@@ -1,11 +1,14 @@
 {
-  "name": "reactive",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@typure/reactive",
   "main": "index.js",
+  "module": "dist/reactive.esm-bundler.js",
+  "types": "dist/reactive.d.ts",
+  "files": [
+    "index.js",
+    "dist"
+  ],
   "buildOptions": {
-    "name": "VueCompilerCore",
-    "compat": true,
+    "name": "TypureReactive",
     "formats": [
       "esm-bundler",
       "cjs"

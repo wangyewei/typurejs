@@ -18,14 +18,7 @@
   },
   "scripts": {
     "build": "node scripts/build.js",
-    "build:cli": "pnpm --dir ./typure-cli build",
-    "build:shared": "pnpm --dir ./packages/shared build",
-    "build:core": "pnpm --dir ./packages/typure-core build",
-    "build:runtime": "pnpm --dir ./packages/runtime build",
-    "build:compile": "pnpm --dir ./packages/compile build",
-    "build:plugin": "pnpm --dir ./typure-plugins/babel-jsx-plugin build",
-    "build:merge": "pnpm run build:cli && pnpm run build:shared && pnpm run build:runtime && pnpm run build:core",
-    "dev": "pnpm --dir ./example dev"
+    "dev": "pnpm --dir ./example install && pnpm --dir ./example dev"
   },
   "repository": {
     "type": "git",
@@ -51,6 +44,11 @@
     "typescript": "^5.0.4"
   },
   "devDependencies": {
-    "minimist": "^1.2.8"
+    "@rollup/plugin-alias": "^5.0.0",
+    "@rollup/plugin-json": "^6.0.0",
+    "chalk": "^5.3.0",
+    "execa": "^7.1.1",
+    "minimist": "^1.2.8",
+    "rollup-plugin-esbuild": "^5.0.0"
   }
 }

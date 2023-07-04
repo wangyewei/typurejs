@@ -5,5 +5,5 @@
     "declarationDir": "dist/types",
     "emitDeclarationOnly": true
   },
-  "include": ["**/*"]
+  "include": ["src/*"]
 }

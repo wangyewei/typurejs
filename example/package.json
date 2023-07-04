@@ -6,6 +6,9 @@
   },
   "dependencies": {
     "@typure/core": "workspace:*",
+    "@typure/compile": "workspace:*",
+    "@typure/runtime": "workspace:*",
+    "@typure/shared": "workspace:*",
     "vite": "^4.3.8"
   }
 }

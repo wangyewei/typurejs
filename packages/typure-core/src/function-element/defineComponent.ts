@@ -1,5 +1,5 @@
 
-import { PureElement } from "typure-element/element"
+import { PureElement } from "../typure-element/element"
 
 export function defineComponent(renderFn: () => HTMLElement | string) {
 

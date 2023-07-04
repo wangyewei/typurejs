@@ -4,12 +4,15 @@
  * @url https://github.com/vuejs/core/blob/main/scripts/build.js
  */
 
-import { targets as allTagets, fuzzyMatchedTargets } from "./utils.js"
+import { targets as allTagets, fuzzyMatchedTargets } from './utils.js'
 // parses command arguments and converts them to JavaScript objects
-import minimist from "minimist"
-import { cpus } from "node:os"
-import path from "node:path"
-import { createRequire, existsSync } from "node:module"
+import minimist from 'minimist'
+import { cpus } from 'node:os'
+import path from 'node:path'
+import { createRequire } from 'node:module'
+import { existsSync } from 'node:fs'
+import fs from 'node:fs/promises'
+import { execa, execaSync } from 'execa'
 
 const require = createRequire(import.meta.url)
 /**
@@ -41,8 +44,13 @@ const targets = args._
  */
 const buildAllMatching = args.all || args.a
 const formats = args.formats || args.f
+const devOnly = args.devOnly || args.d
+const prodOnly = !devOnly && (args.prodOnly || args.p)
+const sourceMap = args.sourcemap || args.s
 
 const isRelease = args.release
+
+const commit = execaSync('git', ['rev-parse', 'HEAD']).stdout.slice(0, 7)
 
 run()
 
@@ -78,9 +86,8 @@ async function runParallel(maxComcurrency, source, iteratorFn) {
         await Promise.race(executing)
       }
     }
-
-    return Promise.all(ret)
   }
+  return Promise.all(ret)
 }
 
 /**
@@ -104,12 +111,12 @@ async function build(target) {
 
   const env =
     (pkg.buildOptions && pkg.buildOptions.env) ||
-    (devOnly ? "development" : "production")
+    (devOnly ? 'development' : 'production')
   await execa(
-    "rollup",
+    'rollup',
     [
-      "-c",
-      "--environment",
+      '-c',
+      '--environment',
       [
         `COMMIT:${commit}`,
         `NODE_ENV:${env}`,
@@ -119,9 +126,9 @@ async function build(target) {
         sourceMap ? `SOURCE_MAP:true` : ``,
       ]
         .filter(Boolean)
-        .join(","),
+        .join(','),
     ],
-    { stdio: "inherit" }
+    { stdio: 'inherit' }
   )
 }
 /**
@@ -131,7 +138,7 @@ async function build(target) {
  */
 
 function checkAllSizes(targets) {
-  if (devOnly || (formats && !formats.includes("global"))) {
+  if (devOnly || (formats && !formats.includes('global'))) {
     return
   }
   console.log()
@@ -149,7 +156,7 @@ function checkAllSizes(targets) {
 function checkSize(target) {
   const pkgDir = path.resolve(`packages/${target}`)
   checkFileSize(`${pkgDir}/dist/${target}.global.prod.js`)
-  if (!formats || formats.includes("global-runtime")) {
+  if (!formats || formats.includes('global-runtime')) {
     checkFileSize(`${pkgDir}/dist/${target}.runtime.global.prod.js`)
   }
 }
@@ -164,11 +171,11 @@ function checkFileSize(filePath) {
     return
   }
   const file = readFileSync(filePath)
-  const minSize = (file.length / 1024).toFixed(2) + "kb"
+  const minSize = (file.length / 1024).toFixed(2) + 'kb'
   const gzipped = gzipSync(file)
-  const gzippedSize = (gzipped.length / 1024).toFixed(2) + "kb"
+  const gzippedSize = (gzipped.length / 1024).toFixed(2) + 'kb'
   const compressed = brotliCompressSync(file)
-  const compressedSize = (compressed.length / 1024).toFixed(2) + "kb"
+  const compressedSize = (compressed.length / 1024).toFixed(2) + 'kb'
   console.log(
     `${chalk.gray(
       chalk.bold(path.basename(filePath))

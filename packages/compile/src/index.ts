@@ -10,4 +10,4 @@ if (typeof __DEV__ === 'undefined') {
   })
 }
 
-export * from './src/parse'
+export * from './parse'

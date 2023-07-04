@@ -1,21 +1,19 @@
 {
   "name": "@typure/compile",
-  "version": "0.0.1",
-  "type": "module",
-  "files": [
-    "dist"
-  ],
-  "main": "dist/index.umd.js",
-  "module": "dist/index.js",
-  "types": "dist/types/index.d.ts",
+  "main": "index.js",
+  "module": "dist/compile.esm-bundler.js",
+  "types": "dist/compile.d.ts",
   "buildOptions": {
-    "name": "TypureCompiler",
-    "compat": true,
+    "name": "TypureCompile",
     "formats": [
       "esm-bundler",
       "cjs"
     ]
   },
+  "files": [
+    "index.js",
+    "dist"
+  ],
   "dependencies": {
     "@typure/cli": "^0.0.1",
     "@typure/core": "workspace:*",
