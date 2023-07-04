@@ -24,7 +24,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          working-directory: ./Typurejs
+          version: '8.6.1'
 
       - name: Install dependencies
         run: pnpm install

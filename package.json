@@ -2,6 +2,7 @@
   "name": "typurejs",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "pnpm@8.6.1",
   "type": "module",
   "description": "typure.js is a lightweight typescript library for building user interfaces. Based on native web components. Efficient, simple, flexible and no virtual DOM, no compile-time.",
   "engines": {
