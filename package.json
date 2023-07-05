@@ -14,13 +14,6 @@
     "build-dts": "rimraf ./temp && tsc -p tsconfig.build.json && rollup -c rollup.dts.config.js",
     "dev": "pnpm --dir ./example install && pnpm --dir ./example dev"
   },
-  "scripts": {
-    "build:cli": "pnpm --dir ./packages/typure-cli build",
-    "build:shared": "pnpm --dir ./packages/shared build",
-    "build:core": "pnpm --dir ./packages/typure-core build",
-    "build:merge": "pnpm run build:cli && pnpm run build:shared",
-    "dev": "pnpm --dir ./packages/typure-ui dev"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wangyewei/Typurejs.git"
