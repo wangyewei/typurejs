@@ -1,39 +1,22 @@
 import { PureElement } from "@typure/core"
-
-function state(initialValue: any) {
-  return function (target: any, propertyKey: string) {
-    let value = initialValue;
-
-    const getter = () => value;
-
-    const setter = (newValue: any) => {
-      value = newValue;
-      target.render();
-    };
-
-    Object.defineProperty(target, propertyKey, {
-      get: getter,
-      set: setter,
-    });
-  };
-}
+import { type State, state } from "@typure/reactive";
 class MyElement extends PureElement {
-  @state(0)
-  count;
+
+  counter: State<number>;
 
   constructor() {
     super()
-    this.count = 1
+    this.counter = state(0)
   }
   countAdd() {
-    this.count++
+    this.counter.value++
   }
   render() {
     return `
      <div>
       <h2 align="center">hello, this is typure.js</h2>
       <p align="center">
-        <span>${this.count}</span>
+        <span>${this.counter.value}</span>
         <button @click="countAdd">count++</button>
       </p>
      </div>

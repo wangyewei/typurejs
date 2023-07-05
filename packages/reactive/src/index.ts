@@ -1,3 +1,4 @@
-const ref = () => { }
-
-export { ref }
+export {
+  state,
+  type State
+} from './state'

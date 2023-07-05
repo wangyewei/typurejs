@@ -9,6 +9,7 @@
     "@typure/compile": "workspace:*",
     "@typure/runtime": "workspace:*",
     "@typure/shared": "workspace:*",
+    "@typure/reactive": "workspace:*",
     "vite": "^4.3.8"
   }
 }

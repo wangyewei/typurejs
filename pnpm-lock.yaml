@@ -47,7 +47,10 @@ importers:
         version: link:../packages/compile
       '@typure/core':
         specifier: workspace:*
-        version: link:../packages/typure-core
+        version: link:../packages/core
+      '@typure/reactive':
+        specifier: workspace:*
+        version: link:../packages/reactive
       '@typure/runtime':
         specifier: workspace:*
         version: link:../packages/runtime
@@ -65,10 +68,28 @@ importers:
         version: link:../../typure-cli
       '@typure/core':
         specifier: workspace:*
-        version: link:../typure-core
+        version: link:../core
       '@typure/runtime':
         specifier: workspace:*
         version: link:../runtime
+      vite:
+        specifier: ^4.3.8
+        version: 4.3.8
+
+  packages/core:
+    dependencies:
+      '@typure/cli':
+        specifier: ^0.0.1
+        version: link:../../typure-cli
+      '@typure/compile':
+        specifier: workspace:*
+        version: link:../compile
+      '@typure/runtime':
+        specifier: workspace:*
+        version: link:../runtime
+      '@typure/shared':
+        specifier: workspace:*
+        version: link:../shared
       vite:
         specifier: ^4.3.8
         version: 4.3.8
@@ -89,24 +110,6 @@ importers:
       '@typure/cli':
         specifier: ^0.0.1
         version: link:../../typure-cli
-      vite:
-        specifier: ^4.3.8
-        version: 4.3.8
-
-  packages/typure-core:
-    dependencies:
-      '@typure/cli':
-        specifier: ^0.0.1
-        version: link:../../typure-cli
-      '@typure/compile':
-        specifier: workspace:*
-        version: link:../compile
-      '@typure/runtime':
-        specifier: workspace:*
-        version: link:../runtime
-      '@typure/shared':
-        specifier: workspace:*
-        version: link:../shared
       vite:
         specifier: ^4.3.8
         version: 4.3.8

@@ -115,17 +115,3 @@ export class PureElement extends HTMLElement {
     throw Error('Must implement the render method')
   }
 }
-
-
-export function state<T>(val: T) {
-  return function (target: any, key: string) {
-    Object.defineProperty(target, key, {
-      get() {
-        return val
-      },
-      set(newVal: T) {
-        console.log(newVal)
-      }
-    })
-  }
-}

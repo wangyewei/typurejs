@@ -6,8 +6,8 @@
     "dist"
   ],
   "main": "index.js",
-  "module": "dist/typure-core.esm-bundler.js",
-  "types": "dist/typure-core.d.ts",
+  "module": "dist/core.esm-bundler.js",
+  "types": "dist/core.d.ts",
   "buildOptions": {
     "name": "TypureCore",
     "compat": true,
