@@ -1,14 +1,33 @@
-import { PureElement } from '@typure/core'
+import { PureElement } from "@typure/core"
+
+function state(initialValue: any) {
+  return function (target: any, propertyKey: string) {
+    let value = initialValue;
+
+    const getter = () => value;
+
+    const setter = (newValue: any) => {
+      value = newValue;
+      target.render();
+    };
+
+    Object.defineProperty(target, propertyKey, {
+      get: getter,
+      set: setter,
+    });
+  };
+}
 class MyElement extends PureElement {
-  count: number = 0
+  @state(0)
+  count;
 
   constructor() {
     super()
+    this.count = 1
   }
   countAdd() {
     this.count++
   }
-
   render() {
     return `
      <div>

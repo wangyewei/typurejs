@@ -5,14 +5,16 @@
  */
 
 import { isString, isHTMLElement, isFunction } from "@typure/shared"
-import { warn } from '@typure/runtime'
+import { warn } from "@typure/runtime"
 import { parse } from '@typure/compile'
 /**
  * The core class that manages component state and properties. When the
  * state changes, the 'update' function is called to update the user inerface.
  */
 export class PureElement extends HTMLElement {
+
   shadowRoot!: ShadowRoot
+
   constructor() {
     super()
   }
@@ -80,7 +82,9 @@ export class PureElement extends HTMLElement {
        */
       this.bindEvent(this.shadowRoot.children[0])
     } else if (isHTMLElement(renderdContent)) {
-      this.shadowRoot.appendChild((renderdContent as HTMLElement).cloneNode(true))
+      this.shadowRoot.appendChild(
+        renderdContent.cloneNode(true)
+      )
     } else if (__DEV__) {
       warn(`Incorrect element is being rendered`, renderdContent)
     }
@@ -110,4 +114,18 @@ export class PureElement extends HTMLElement {
   render(): HTMLElement | string {
     throw Error('Must implement the render method')
   }
-} 
+}
+
+
+export function state<T>(val: T) {
+  return function (target: any, key: string) {
+    Object.defineProperty(target, key, {
+      get() {
+        return val
+      },
+      set(newVal: T) {
+        console.log(newVal)
+      }
+    })
+  }
+}
