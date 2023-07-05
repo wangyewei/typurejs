@@ -4,7 +4,7 @@
   "private": true,
   "packageManager": "pnpm@8.6.1",
   "type": "module",
-  "description": "typure.js is a lightweight typescript library for building user interfaces. Based on native web components. Efficient, simple, flexible and no virtual DOM, no compile-time.",
+  "description": "typure.js is a lightweight TypeScript library that is built on native web components for building user interfaces.",
   "engines": {
     "node": ">= 14.0.0",
     "pnpm": ">= 6.0.0"
