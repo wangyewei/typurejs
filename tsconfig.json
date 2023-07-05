@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "target": "ESNext",
+    "baseUrl": ".",
+    "outDir": "temp",
     "useDefineForClassFields": true,
     "module": "ESNext",
     "moduleResolution": "node",
@@ -10,6 +12,9 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "lib": ["ESNext", "DOM"],
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "paths": {
+      "@typure/*": ["packages/*/src"]
+    }
   }
 }

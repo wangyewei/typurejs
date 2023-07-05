@@ -1,0 +1,22 @@
+{
+  "name": "@typure/reactive",
+  "main": "index.js",
+  "module": "dist/reactive.esm-bundler.js",
+  "types": "dist/reactive.d.ts",
+  "files": [
+    "index.js",
+    "dist"
+  ],
+  "buildOptions": {
+    "name": "TypureReactive",
+    "formats": [
+      "esm-bundler",
+      "cjs"
+    ]
+  },
+  "keywords": [
+    "typure"
+  ],
+  "author": "",
+  "license": "MIT"
+}

@@ -1,8 +1,10 @@
-import { build as viteBuild } from "vite"
+
 import { remove } from 'fs-extra'
 import { execa } from 'execa'
 import path from 'path'
 import { createSpinner } from 'nanospinner'
+import { rollup } from 'rollup';
+
 
 type BuildTaskOption = Record<string, any>
 
@@ -11,12 +13,11 @@ export async function buildTask(option: BuildTaskOption) {
   const spinner = createSpinner().start()
   const __dirname = process.cwd()
 
+  const rollupConfig = require(path.resolve(__dirname, 'rollup.config.js'));
+
   try {
     await remove(path.resolve(__dirname, 'dist'))
-    await viteBuild({
-      root: __dirname,
-      configFile: './vite.config.ts'
-    })
+    await rollup(rollupConfig)
 
     await execa('tsc')
     const end = Date.now()

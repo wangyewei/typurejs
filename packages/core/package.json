@@ -1,0 +1,26 @@
+{
+  "name": "@typure/core",
+  "version": "0.0.1",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "index.js",
+  "module": "dist/core.esm-bundler.js",
+  "types": "dist/core.d.ts",
+  "buildOptions": {
+    "name": "TypureCore",
+    "compat": true,
+    "formats": [
+      "esm-bundler",
+      "cjs"
+    ]
+  },
+  "dependencies": {
+    "@typure/cli": "^0.0.1",
+    "@typure/compile": "workspace:*",
+    "@typure/runtime": "workspace:*",
+    "@typure/shared": "workspace:*",
+    "vite": "^4.3.8"
+  }
+}

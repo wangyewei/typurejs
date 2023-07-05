@@ -1,0 +1,24 @@
+{
+  "name": "@typure/runtime",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "index.js",
+  "module": "dist/runtime.esm-bundler.js",
+  "types": "dist/runtime.d.ts",
+  "buildOptions": {
+    "name": "TypureCore",
+    "compat": true,
+    "formats": [
+      "esm-bundler",
+      "cjs"
+    ]
+  },
+  "dependencies": {
+    "@typure/cli": "^0.0.1",
+    "vite": "^4.3.8"
+  }
+}
