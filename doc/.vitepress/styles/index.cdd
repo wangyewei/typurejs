@@ -1,0 +1,3 @@
+.VPContent.is-home {
+  background-color: red !important;
+}

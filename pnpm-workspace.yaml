@@ -3,3 +3,4 @@ packages:
   - 'typure-cli'
   - 'example'
   - 'typure-plugins/*'
+  - 'doc'

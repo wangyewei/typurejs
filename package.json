@@ -12,7 +12,9 @@
   "scripts": {
     "build": "node scripts/build.js",
     "build-dts": "rimraf ./temp && tsc -p tsconfig.build.json && rollup -c rollup.dts.config.js",
-    "dev": "pnpm --dir ./example install && pnpm --dir ./example dev"
+    "dev": "pnpm --dir ./example install && pnpm --dir ./example dev",
+    "docs:dev": "pnpm --dir ./doc install && pnpm --dir ./doc docs:dev",
+    "docs:build": "pnpm --dir ./doc install && pnpm --dir ./doc docs:build"
   },
   "repository": {
     "type": "git",
