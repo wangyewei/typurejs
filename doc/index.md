@@ -35,6 +35,10 @@ import FooterComp from './.vitepress/components/footer/index.vue'
 </script>
 
 <style>
+.VPHome {
+  padding-bottom: 0 !important;
+}
+
 .VPHero .container .main {
   width: 100%;
   display: flex;
