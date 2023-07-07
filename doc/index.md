@@ -23,10 +23,13 @@ layout: home
 ---
 
 <Home />
+<GuideComp />
+<OpenComp />
 <FooterComp />
-
 <script setup>
 import Home from './.vitepress/components/home/index.vue'
+import GuideComp from './.vitepress/components/guide/index.vue'
+import OpenComp from './.vitepress/components/open/index.vue'
 import Sponsor from './.vitepress/components/sponsor/index.vue'
 import FooterComp from './.vitepress/components/footer/index.vue'
 </script>

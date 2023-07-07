@@ -5,7 +5,7 @@
 <template>
   <div class="content">
     <div class="title">Native, Pure, Modern</div>
-    <div class="subtitle">JavaScript Framwork</div>
+    <div class="subtitle">JavaScript Framework</div>
 
     <div class="tagline">@wangyewei</div>
 
@@ -34,6 +34,7 @@
   width: auto;
   position: relative;
 }
+
 .title {
   font-size: 63px;
   line-height: 63px;
