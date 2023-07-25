@@ -10,4 +10,8 @@ if (typeof __DEV__ === 'undefined') {
   })
 }
 
-export * from './typure-element/element'
+export * from './element'
+
+export {
+  defineComponent
+} from './function-element/defineComponent'

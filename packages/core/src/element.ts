@@ -73,6 +73,9 @@ export class PureElement extends HTMLElement {
    */
   renderElement() {
     const renderdContent = this.render()
+
+    console.log(renderdContent)
+
     if (isString(renderdContent)) {
       const parsedContent = parse.call(this, renderdContent)
       this.shadowRoot.appendChild(parsedContent)
@@ -114,4 +117,19 @@ export class PureElement extends HTMLElement {
   render(): HTMLElement | string {
     throw Error('Must implement the render method')
   }
+}
+
+
+/**
+ * register components that imports be imported.
+ */
+export function components(
+  components: Record<
+    string,
+    CustomElementConstructor
+  >
+) {
+  Object.keys(components).forEach(
+    compName => customElements.define(compName, components[compName])
+  )
 }

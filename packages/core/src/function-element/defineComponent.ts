@@ -1,7 +1,9 @@
 
-import { PureElement } from "../typure-element/element"
-
-export function defineComponent(renderFn: () => HTMLElement | string) {
+import { PureElement } from "../element"
+import { overwritesSetup } from '../overwrite/prototype'
+export function defineComponent(
+  renderFn: () => HTMLElement | string
+): CustomElementConstructor {
 
 
   return class extends PureElement {
@@ -11,7 +13,13 @@ export function defineComponent(renderFn: () => HTMLElement | string) {
     }
 
     render() {
-      return renderFn()
+      return (function () {
+        const [overwritesArray] = overwritesSetup()
+        overwritesArray()
+
+
+        return renderFn()
+      })()
     }
 
   }

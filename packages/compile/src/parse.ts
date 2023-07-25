@@ -59,5 +59,10 @@ export const parseElement = (templateHTMLstr: string): HTMLCollection => {
  * to dynamically generate and update page content.
  */
 export const parse = (templateHTMLstr: string): DocumentFragment => {
+  /**
+   * resoleves components of typure here
+   */
+  console.log(templateHTMLstr)
+
   return createElement(parseElement(templateHTMLstr))
 }

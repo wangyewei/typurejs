@@ -1,3 +1,3 @@
-import MyElement from "./app";
+import App from "./app";
 
-customElements.define('my-element', MyElement)
+customElements.define('main-app', App)

@@ -1,3 +1,8 @@
+/**
+ * This function creates a reactive variable that triggers
+ * an effect function when the varibale variable is changed.
+ * 
+ */
 export function state<T>(val: T): StateImpl<T> {
   return createState<T>(val)
 }

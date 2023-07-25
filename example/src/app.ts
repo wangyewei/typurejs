@@ -1,26 +1,11 @@
-import { PureElement } from "@typure/core"
-import { type State, state } from "@typure/reactive";
-class MyElement extends PureElement {
+import { defineComponent, components } from '@typure/core'
+import NavBar from './components/NavBar'
 
-  counter: State<number>;
+const App = defineComponent(() => {
+  components({ 'nav-bar': NavBar })
+  return `
+    <nav-bar />
+  `
+})
 
-  constructor() {
-    super()
-    this.counter = state(0)
-  }
-  countAdd() {
-    this.counter.value++
-  }
-  render() {
-    return `
-     <div>
-      <h2 align="center">hello, this is typure.js</h2>
-      <p align="center">
-        <span>${this.counter.value}</span>
-        <button @click="countAdd">count++</button>
-      </p>
-     </div>
-    `
-  }
-}
-export default MyElement
+export default App
