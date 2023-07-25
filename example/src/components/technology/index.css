@@ -1,0 +1,17 @@
+.technology {
+  /* max-width: 1440px; */
+  margin: 0 auto;
+  max-width: 92%;
+
+  background: rgb(222, 95, 116);
+
+  padding: 45px;
+
+  height: 450px;
+
+  border-radius: 24px;
+}
+
+.technology h1 {
+  color: white;
+}

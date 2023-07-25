@@ -13,5 +13,7 @@ if (typeof __DEV__ === 'undefined') {
 export * from './element'
 
 export {
-  defineComponent
+  defineComponent,
+  defineScopedCss,
+  defineMethod,
 } from './function-element/defineComponent'

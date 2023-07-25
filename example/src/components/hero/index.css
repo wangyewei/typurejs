@@ -1,0 +1,28 @@
+.hero {
+  max-width: 1440px;
+  margin: 0 auto;
+
+  padding: 75px 0;
+}
+
+.hero .item {
+  margin: 20px 0;
+}
+
+.hero h2 {
+  font-size: 56px;
+  padding: 0;
+  margin: 0;
+  color: #444;
+  font-family: 'Fedra Sans', sans-serif;
+}
+
+.hero h5 {
+  font-size: 22px;
+  font-family: 'Fedra Sans', sans-serif;
+  font-weight: lighter;
+  color: #ccc;
+
+  padding: 0;
+  margin: 0;
+}

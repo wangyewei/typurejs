@@ -14,7 +14,7 @@
     "build-core": "node scripts/build.js",
     "build-dts": "rimraf ./temp && tsc -p tsconfig.build.json && rollup -c rollup.dts.config.js",
     "dev": "pnpm -F=example dev",
-    "dev:build": "run-s build dev",
+    "dev:preview": "run-s build dev",
     "docs:dev": "pnpm --dir ./doc install && pnpm --dir ./doc docs:dev",
     "docs:build": "pnpm install && pnpm --dir ./doc docs:build"
   },

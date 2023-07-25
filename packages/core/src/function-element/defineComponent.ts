@@ -1,25 +1,26 @@
 
 import { PureElement } from "../element"
 import { overwritesSetup } from '../overwrite/prototype'
+
+export { defineScopedCss } from './defines/defineScopedCss'
+
+export { defineMethod } from './defines/defineMethod'
+
 export function defineComponent(
-  renderFn: () => HTMLElement | string
+  renderFn: (
+    context?: PureElement
+  ) => HTMLElement | string
 ): CustomElementConstructor {
-
-
   return class extends PureElement {
 
     constructor() {
       super()
     }
 
-    render() {
-      return (function () {
-        const [overwritesArray] = overwritesSetup()
-        overwritesArray()
-
-
-        return renderFn()
-      })()
+    render(): string | HTMLElement {
+      const [overwritesArray] = overwritesSetup()
+      overwritesArray()
+      return renderFn(this)
     }
 
   }

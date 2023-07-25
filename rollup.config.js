@@ -57,7 +57,7 @@ function createConfig(format, output, plugins = []) {
   // const isNodeBuild = format === 'cjs'
 
   output.exports = 'named'
-  output.sourcemap = false
+  output.sourcemap = true
 
   let entryFile = 'src/index.ts'
 

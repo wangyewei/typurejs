@@ -49,12 +49,17 @@ export class PureElement extends HTMLElement {
           const eventName = attr.name.slice(1)
           const eventHandler = attr.value
           element.addEventListener(eventName, (e: Event) => {
+
             /**
              * expected features:
              * [x]: PureEventReturnType
              */
-            (this as Record<string, any>)[eventHandler].call(this, e)
-            this.update()
+
+            console.log((this as Record<string, any>)[eventHandler])
+              ; (this as Record<string, any>)[eventHandler].call(this, e)
+
+
+            // this.update()
             e.stopPropagation()
           }, false);
           (element as HTMLElement).removeAttribute(attr.name)
@@ -73,8 +78,6 @@ export class PureElement extends HTMLElement {
    */
   renderElement() {
     const renderdContent = this.render()
-
-    console.log(renderdContent)
 
     if (isString(renderdContent)) {
       const parsedContent = parse.call(this, renderdContent)
@@ -116,6 +119,10 @@ export class PureElement extends HTMLElement {
    */
   render(): HTMLElement | string {
     throw Error('Must implement the render method')
+  }
+
+  scopedCss(style: CSSStyleSheet): void {
+    this.shadowRoot.adoptedStyleSheets = [style]
   }
 }
 
