@@ -6,6 +6,8 @@ export { defineScopedCss } from './defines/defineScopedCss'
 
 export { defineMethod } from './defines/defineMethod'
 
+export { defineEmit } from './defines/defineEmit'
+
 export function defineComponent(
   renderFn: (
     context?: PureElement

@@ -4,9 +4,10 @@
  * @copyright 2023-preset Yewei Wang
  */
 
-import { isString, isHTMLElement, isFunction } from "@typure/shared"
+import { isString, isHTMLElement, isFunction, isBuiltInEvent } from "@typure/shared"
 import { warn } from "@typure/runtime"
 import { parse } from '@typure/compile'
+import { evtBus } from "./events"
 /**
  * The core class that manages component state and properties. When the
  * state changes, the 'update' function is called to update the user inerface.
@@ -46,22 +47,40 @@ export class PureElement extends HTMLElement {
       && attributes.length
       && Array.from(attributes).forEach(attr => {
         if (attr.name.startsWith('@')) {
+          console.log(attr)
           const eventName = attr.name.slice(1)
           const eventHandler = attr.value
-          element.addEventListener(eventName, (e: Event) => {
 
-            /**
-             * expected features:
-             * [x]: PureEventReturnType
-             */
-
-            console.log((this as Record<string, any>)[eventHandler])
+          if (isBuiltInEvent(eventName)) {
+            element.addEventListener(eventName, (e: Event) => {
+              /**
+               * expected features:
+               * [x]: PureEventReturnType
+               */
               ; (this as Record<string, any>)[eventHandler].call(this, e)
 
+              e.stopPropagation()
+            }, false)
+          } else {
+            /**
+             * save custom events into a map, when `defineEmits.emit` is triggerd
+             * execute the matching event.
+             */
 
-            // this.update()
-            e.stopPropagation()
-          }, false);
+            const originalFunc = new Function(eventHandler)
+
+            const handler =
+              (this as Record<string, any>)[eventHandler].bind(this)
+
+            console.log(handler)
+
+
+            evtBus.emit(eventName, handler)
+
+            console.log(evtBus.eventMap)
+          }
+
+
           (element as HTMLElement).removeAttribute(attr.name)
         }
       })

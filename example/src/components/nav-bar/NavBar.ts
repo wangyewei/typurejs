@@ -3,6 +3,7 @@ import {
   defineScopedCss,
   defineMethod,
 } from "@typure/core"
+
 import { state } from '@typure/reactive'
 
 const NavBar = defineComponent((context) => {
@@ -24,24 +25,32 @@ const NavBar = defineComponent((context) => {
     target = context.shadowRoot.getElementById('nav-bar')
   })
 
-  const fillNavBar = defineMethod(context, 'fillNavBar', () => {
-    if (window.scrollY < 200) {
-      if (target.classList.length === 2) {
-        target.classList.remove('nav-bar__full')
-      }
-      return
-    } else {
-      if (target.classList.length >= 2) {
-        return
-      }
-      target.classList.add('nav-bar__full')
-    }
+  // const fillNavBar = defineMethod(context, 'fillNavBar', () => {
+  //   if (window.scrollY < 200) {
+  //     if (target.classList.length === 2) {
+  //       target.classList.remove('nav-bar__full')
+  //     }
+  //     return
+  //   } else {
+  //     if (target.classList.length >= 2) {
+  //       return
+  //     }
+  //     target.classList.add('nav-bar__full')
+  //   }
+  // })
+
+  // window.addEventListener('scroll', fillNavBar as any)
+
+  defineMethod(context, 'fullwidth', () => {
+    target.classList.add('nav-bar__full')
   })
 
-  window.addEventListener('scroll', fillNavBar as any)
+  defineMethod(context, 'halfwidth', () => {
+    target.classList.remove('nav-bar__full')
+  })
 
   return `
-  <div class="nav-bar" id="nav-bar">
+  <div class="nav-bar" id="nav-bar" @fullwidth="fullwidth" @halfwidth="halfwidth">
     <div class="nav-bar__left">
       ${name.value}
     </div>

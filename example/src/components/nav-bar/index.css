@@ -15,7 +15,7 @@ li {
 
   background: #fff;
 
-  width: 1440px;
+  width: 72%;
 
   transition: 0.25s all ease-in-out;
 
@@ -30,7 +30,8 @@ li {
 }
 
 .nav-bar__full {
-  width: 100%;
+  width: 97.5%;
+  border: none;
 }
 
 .nav-bar__right {

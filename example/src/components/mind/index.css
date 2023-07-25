@@ -1,9 +1,10 @@
-.technology {
-  /* max-width: 1440px; */
+.mind {
   margin: 0 auto;
   max-width: 92%;
 
-  background: rgb(222, 95, 116);
+  background: rgb(24, 104, 164);
+
+  margin-top: 12px;
 
   padding: 45px;
 
@@ -12,6 +13,6 @@
   border-radius: 12px;
 }
 
-.technology h1 {
+.mind h1 {
   color: white;
 }

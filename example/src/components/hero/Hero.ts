@@ -7,7 +7,7 @@ import {
 export default defineComponent((context) => {
 
   defineScopedCss(context, import('./index.css'))
-  //@ts-ignore
+
   defineMethod(context, 'handleScroll', () => {
     console.log(context.shadowRoot.getElementById('nav-full-target'))
   })

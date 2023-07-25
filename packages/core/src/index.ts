@@ -16,4 +16,5 @@ export {
   defineComponent,
   defineScopedCss,
   defineMethod,
+  defineEmit
 } from './function-element/defineComponent'
