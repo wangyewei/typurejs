@@ -2,29 +2,29 @@
 
 ## What is Typure
 
-Typure is a JavaScript framework for building user interfaces without the need for build-time or Virtual DOM. It's a pure JavaScript framework that you can easily import and use in your projects. Additionally, you have the flexibility to integrate Typure into Vue or React if you prefer. So, come on, and enjoy your coding journey with Typure!
+Typure is a JavaScript framework for building user interfaces without the need for build-time or Virtual DOM. It's a lightweight and pure JavaScript framework that you can effortlessly import and utilize in your projects. Moreover, you have the freedom to integrate Typure into Vue or React if you prefer. So, come on, and embark on your coding journey with Typure!
 
-Here is an example:
+Here is an example of Typure in action:
 
 ```html
 <main-app />
 ```
 
 ```typescript
-import { defineComponent, defineMethod } from '@typure/core'
-import { state } from '@typure/reactive'
+import { defineComponent, defineMethod } from "@typure/core";
+import { state } from "@typure/reactive";
 
 const App = defineComponent((context) => {
-  let conunt = state<number>(0)
+  let conunt = state<number>(0);
 
-  defineMethod(context, 'countAdd', () => {
-    count.value++
-  })
+  defineMethod(context, "countAdd", () => {
+    count.value++;
+  });
 
-  return `<button @click="countAdd">Count is: ${count.value}</button>`
-})
+  return `<button @click="countAdd">Count is: ${count.value}</button>`;
+});
 
-customElements.define('main-app', App)
+customElements.define("main-app", App);
 ```
 
 ### Result
@@ -36,11 +36,6 @@ This example demonstrates the two core features of Typure:
 - **Reactivity**: When a reactive variable, created using the `state` api, is changed, Typure automatically updates the view.
 
 - **Function Component**: In Typure, a component is function created using `defineComponent` api, which returns a JSX-like string to describe the DOM structure.
-
-<script setup>
-import Demo from './demo.vue'
-
-</script>
 
 ## The Pure JavaScript Framework
 
@@ -55,26 +50,26 @@ Typure provides two component styles: **Function Components** and **Class Compon
 The Function Component was demonstrated earlier, Here is an example of achiveing the same features using a Class Component:
 
 ```typescript
-import { PureElement } from '@typure/core'
-import { type State, state } from '@typure/reactive'
+import { PureElement } from "@typure/core";
+import { type State, state } from "@typure/reactive";
 
 class App extends PureElement {
-  count!: State<number>
+  count!: State<number>;
 
   constructor() {
-    this.count = state<number>(1)
+    this.count = state<number>(1);
   }
 
   coundAdd() {
-    this.count.value++
+    this.count.value++;
   }
 
   render() {
-    return `<button @click="countAdd">Count is: ${this.count.value}</button>`
+    return `<button @click="countAdd">Count is: ${this.count.value}</button>`;
   }
 }
 
-customElements.define('main-app', App)
+customElements.define("main-app", App);
 ```
 
 ## Which To Choose
@@ -86,3 +81,11 @@ Nevertheless,the additional performance overhead is usuallu negligible. Ultimate
 ## Still Got Question?
 
 Pull an issue on [GitHub](https://github.com/wangyewei/typurejs/issues)
+
+<FooterComp />
+
+<Ads />
+
+<script setup>
+import Demo from './demo.vue'
+</script>
