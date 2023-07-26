@@ -27,3 +27,5 @@ dist.zip
 
 # lock files
 pnpm-lock.yaml
+
+**/cache

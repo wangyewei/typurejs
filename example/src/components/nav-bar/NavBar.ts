@@ -1,10 +1,17 @@
+
 import {
   defineComponent,
   defineScopedCss,
   defineMethod,
+  defineEmit,
 } from "@typure/core"
 
 import { state } from '@typure/reactive'
+
+type NavItem = {
+  title: string,
+  hash: string
+}
 
 const NavBar = defineComponent((context) => {
 
@@ -12,11 +19,24 @@ const NavBar = defineComponent((context) => {
 
   const name = state<string>('🌟')
 
-  const navList: string[] = [
-    'Technology',
-    'State Of Mind',
-    'Books Sharing',
-    'About'
+
+  const navList: NavItem[] = [
+    {
+      title: 'Technology',
+      hash: 'techonology'
+    },
+    {
+      title: 'State Of Mind',
+      hash: 'mind'
+    },
+    {
+      title: 'Books Sharing',
+      hash: 'books'
+    },
+    {
+      title: 'About',
+      hash: 'about'
+    }
   ]
 
   let target: Element | null = null
@@ -24,22 +44,6 @@ const NavBar = defineComponent((context) => {
   window.addEventListener('DOMContentLoaded', () => {
     target = context.shadowRoot.getElementById('nav-bar')
   })
-
-  // const fillNavBar = defineMethod(context, 'fillNavBar', () => {
-  //   if (window.scrollY < 200) {
-  //     if (target.classList.length === 2) {
-  //       target.classList.remove('nav-bar__full')
-  //     }
-  //     return
-  //   } else {
-  //     if (target.classList.length >= 2) {
-  //       return
-  //     }
-  //     target.classList.add('nav-bar__full')
-  //   }
-  // })
-
-  // window.addEventListener('scroll', fillNavBar as any)
 
   defineMethod(context, 'fullwidth', () => {
     target.classList.add('nav-bar__full')
@@ -49,13 +53,17 @@ const NavBar = defineComponent((context) => {
     target.classList.remove('nav-bar__full')
   })
 
+  defineMethod(context, 'navItemClick', (e: string) => {
+    defineEmit('navclick', e)
+  })
+
   return `
   <div class="nav-bar" id="nav-bar" @fullwidth="fullwidth" @halfwidth="halfwidth">
     <div class="nav-bar__left">
       ${name.value}
     </div>
     <ul class="nav-bar__right">
-     ${navList.map(item => `<li>${item}</li>`)}
+     ${navList.map(item => `<li @click="navItemClick(${item.hash})">${item.title}</li>`)}
     </ul>
   </div>`
 })

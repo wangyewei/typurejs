@@ -12,9 +12,9 @@ class Events {
     this.eventMap.set(key, val)
   }
 
-  trigger(key: string) {
+  trigger(key: string, ...params: any[]) {
     if (!this.eventMap.has(key)) return
-    this.eventMap.get(key)!()
+    this.eventMap.get(key)!(...params)
   }
 
 }

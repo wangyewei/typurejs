@@ -1,20 +1,27 @@
 <template>
   <div class="relative h420 wrap">
-    <div class="absolute inset-0 top-60 grid grid-cols-2 -space-x-52 opacity-50 dark:opacity-30">
-      <div class="h-60 bg-gradient-to-br from-primary to-purple-400 blur-[106px] dark:from-blue-700"></div>
-      <div class="h-40 bg-gradient-to-r from-cyan-400 to-sky-300 blur-[106px] dark:to-indigo-600"></div>
+    <div
+      class="absolute inset-0 top-60 grid grid-cols-2 -space-x-52 opacity-50 dark:opacity-30"
+    >
+      <div
+        class="h-60 bg-gradient-to-br from-primary to-purple-400 blur-[106px] dark:from-blue-700"
+      ></div>
+      <div
+        class="h-40 bg-gradient-to-r from-cyan-400 to-sky-300 blur-[106px] dark:to-indigo-600"
+      ></div>
     </div>
 
     <div class="relative content">
-      <div class="center">
-        Open, Supportive Community
-      </div>
+      <div class="center">Open, Supportive Community</div>
 
       <div class="social">
-        <img src="./assets/avator.jpg" alt="">
+        <img src="./assets/avator.jpg" alt="" />
 
         <div class="desc">
-          <P>Join a thriving community where we come together to support, inspire, and lift each other up.</P>
+          <P
+            >Join a thriving community where we come together to support,
+            inspire, and lift each other up.</P
+          >
           <div class="btn">join now</div>
         </div>
       </div>
@@ -63,7 +70,7 @@
   grid-template-columns: 1fr 1fr;
 }
 
-.-space-x-52>*+* {
+.-space-x-52 > * + * {
   margin-left: -52px;
 }
 
@@ -128,7 +135,6 @@
   height: 100%;
   align-items: center;
   justify-content: center;
-
 }
 
 .center {
@@ -184,6 +190,7 @@ img {
   padding: 0 24px;
   text-align: center;
   justify-content: center;
+  color: #fff;
 }
 
 .social p {
@@ -195,5 +202,19 @@ img {
   font-family: Sharpgrotesk, sans-serif;
   /* font-size: 3rem; */
   font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .wrap {
+    width: 100%;
+    overflow: hidden;
+
+    display: none;
+
+    margin-bottom: 40px;
+  }
+  img {
+    display: none;
+  }
 }
 </style>

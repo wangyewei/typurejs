@@ -20,25 +20,21 @@ export default defineComponent((context) => {
     full: false,
     half: true,
   }
+
   window.addEventListener('scroll', () => {
     const { top } = target.value.getBoundingClientRect()
 
     if (top < 62 && status.half) {
       defineEmit('fullwidth')
-
-
       status.half = false
       status.full = true
     }
 
     if (top > 62 && status.full) {
       defineEmit('halfwidth')
-
       status.half = true
       status.full = false
     }
-
-    // defineEmit('', )
 
   })
 

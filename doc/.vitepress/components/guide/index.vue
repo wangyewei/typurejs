@@ -2,8 +2,8 @@
   <div class="wrap">
     <div class="desc">
       <p>
-        Typure.js is a lightweight TypeScript framework that is built on native web components for building user
-        interfaces.
+        Typure.js is a lightweight TypeScript framework that is built on native
+        web components for building user interfaces.
       </p>
 
       <div class="title">DownLoad</div>
@@ -14,17 +14,13 @@
 
       <div class="title">Typure Cli</div>
 
-      <div class="code">
-        $ typure-cli create-app demo --template-ts
-      </div>
+      <div class="code">$ typure-cli create-app demo --template-ts</div>
 
       <div class="title">Progressive</div>
 
-      <div class="code">
-        $ pnpm install typure
-      </div>
+      <div class="code">$ pnpm install typure</div>
     </div>
-    <img src="https://he3.app/images/home.png" alt="">
+    <img src="https://he3.app/images/home.png" alt="" />
   </div>
 </template>
 
@@ -67,7 +63,6 @@
 }
 
 .btns .btn {
-
   color: aliceblue;
   transition: 0.65s all ease-in-out;
   background-image: linear-gradient(163deg, #08aeea 0%, #08aeea 100%);
@@ -84,7 +79,6 @@
   text-align: center;
   font-weight: 600;
   white-space: nowrap;
-
 }
 
 .code {
@@ -100,5 +94,40 @@
 
 img {
   margin-left: 44px;
+}
+
+@media (max-width: 768px) {
+  .wrap {
+    grid-template-columns: 1fr;
+    width: 100%;
+
+    display: grid;
+    grid-template-rows: auto auto;
+    align-items: center;
+    justify-content: center;
+
+    gap: 35px;
+  }
+
+  .desc {
+    text-align: center;
+  }
+
+  .desc p {
+    line-height: 31px;
+  }
+
+  .desc .title {
+    color: var(--vp-c-gray);
+  }
+
+  .btns {
+    justify-content: center;
+  }
+
+  img {
+    order: -1;
+    transform: translateX(-44px);
+  }
 }
 </style>

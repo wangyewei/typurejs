@@ -47,40 +47,36 @@ export class PureElement extends HTMLElement {
       && attributes.length
       && Array.from(attributes).forEach(attr => {
         if (attr.name.startsWith('@')) {
-          console.log(attr)
-          const eventName = attr.name.slice(1)
-          const eventHandler = attr.value
 
+          const eventName = attr.name.slice(1)
+          // const eventHandler = attr.value
+
+          const { handler: eventHandler, params } = resolveEvents(attr.value)
           if (isBuiltInEvent(eventName)) {
             element.addEventListener(eventName, (e: Event) => {
               /**
                * expected features:
                * [x]: PureEventReturnType
                */
-              ; (this as Record<string, any>)[eventHandler].call(this, e)
+              ; (this as Record<string, any>)[eventHandler].call(this, params)
 
               e.stopPropagation()
             }, false)
           } else {
+
             /**
              * save custom events into a map, when `defineEmits.emit` is triggerd
              * execute the matching event.
              */
 
-            const originalFunc = new Function(eventHandler)
+            const handleFn = (
+              this as Record<string, any>
+            )[eventHandler].bind(this, params)
 
-            const handler =
-              (this as Record<string, any>)[eventHandler].bind(this)
+            console.log(handleFn)
 
-            console.log(handler)
-
-
-            evtBus.emit(eventName, handler)
-
-            console.log(evtBus.eventMap)
+            evtBus.emit(eventName, handleFn)
           }
-
-
           (element as HTMLElement).removeAttribute(attr.name)
         }
       })
@@ -158,4 +154,34 @@ export function components(
   Object.keys(components).forEach(
     compName => customElements.define(compName, components[compName])
   )
+}
+
+/**
+ * func('xxx', '111')
+ * {
+ *  handler: 'func'
+ *  params: ['xxx', '111']
+ * }
+ */
+function resolveEvents(
+  handlerStr: string
+): { handler: string, params: any[] } {
+
+  const regex = /(\w+)\((.*)\)/;
+  const match = handlerStr.match(regex);
+
+  if (match) {
+    const handler = match[1];
+    const params = match[2].split(',').map(param => param.trim());
+
+    return {
+      handler,
+      params: params
+    };
+  }
+
+  return {
+    handler: handlerStr,
+    params: []
+  }; // Return null if the string doesn't match the pattern.
 }

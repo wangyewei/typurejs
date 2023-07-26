@@ -16,6 +16,7 @@ export default defineConfig({
         text: 'Getting Start',
         items: [
           { text: 'Introduction', link: '/intro/' },
+          { text: 'Quick Start', link: '/intro/start' }
           // { text: 'Runtime API Examples', link: '/api-examples' }
         ]
       }
