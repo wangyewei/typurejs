@@ -49,17 +49,17 @@ export class PureElement extends HTMLElement {
         if (attr.name.startsWith('@')) {
 
           const eventName = attr.name.slice(1)
-          // const eventHandler = attr.value
 
           const { handler: eventHandler, params } = resolveEvents(attr.value)
+
           if (isBuiltInEvent(eventName)) {
             element.addEventListener(eventName, (e: Event) => {
               /**
                * expected features:
                * [x]: PureEventReturnType
                */
-              ; (this as Record<string, any>)[eventHandler].call(this, params)
 
+              ; (this as Record<string, any>)[eventHandler].call(this, params)
               e.stopPropagation()
             }, false)
           } else {
@@ -71,9 +71,7 @@ export class PureElement extends HTMLElement {
 
             const handleFn = (
               this as Record<string, any>
-            )[eventHandler].bind(this, params)
-
-            console.log(handleFn)
+            )[eventHandler].bind(this, ...params)
 
             evtBus.emit(eventName, handleFn)
           }
@@ -172,16 +170,16 @@ function resolveEvents(
 
   if (match) {
     const handler = match[1];
-    const params = match[2].split(',').map(param => param.trim());
+    const params = match[2].split(',').map(param => param.trim())
 
     return {
       handler,
       params: params
-    };
+    }
   }
-
+  // Return null if the string doesn't match the pattern.
   return {
     handler: handlerStr,
     params: []
-  }; // Return null if the string doesn't match the pattern.
+  }
 }

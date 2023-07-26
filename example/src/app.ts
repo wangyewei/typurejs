@@ -15,7 +15,6 @@ const App = defineComponent((context) => {
   })
 
   defineMethod(context, 'navClick', (e: string) => {
-    console.log('trigger')
     console.log(e)
   })
 
@@ -26,7 +25,7 @@ const App = defineComponent((context) => {
 
       <hero-section></hero-section>
 
-      <techonology-section id="technology"></techonology-section>
+      <techonology-section></techonology-section>
 
       <mind-section></mind-section>
 
