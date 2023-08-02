@@ -1,4 +1,4 @@
-import type { PureElement } from "../../element"
+import type { PureElement } from "../element"
 
 export async function defineScopedCss(
   context: PureElement,

@@ -14,7 +14,7 @@ const App = defineComponent((context) => {
     'mind-section': Mind
   })
 
-  defineMethod(context, 'navClick', (e: string) => {
+  defineMethod<() => void>(context, 'navClick', (e: string) => {
     console.log(e)
   })
 

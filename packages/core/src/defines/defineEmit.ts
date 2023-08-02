@@ -1,4 +1,4 @@
-import { evtBus } from '../../events'
+import { evtBus } from '../events'
 
 export function defineEmit(
   eventName: string,

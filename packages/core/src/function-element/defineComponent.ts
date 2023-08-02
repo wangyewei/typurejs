@@ -2,11 +2,11 @@
 import { PureElement } from "../element"
 import { overwritesSetup } from '../overwrite/prototype'
 
-export { defineScopedCss } from './defines/defineScopedCss'
+export { defineScopedCss } from '../defines/defineScopedCss'
 
-export { defineMethod } from './defines/defineMethod'
+export { defineMethod } from '../defines/defineMethod'
 
-export { defineEmit } from './defines/defineEmit'
+export { defineEmit } from '../defines/defineEmit'
 
 export function defineComponent(
   renderFn: (
